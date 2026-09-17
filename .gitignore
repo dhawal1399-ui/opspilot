@@ -1,6 +1,29 @@
+# Virtual environment
 myvenv/
+venv/
+.venv/
+
+# Environment / secrets
 .env
+.env.*
+!.env.example
+
+# Python
 __pycache__/
 *.pyc
-.DS_Store
 .pytest_cache/
+*.pyo
+
+# macOS
+.DS_Store
+
+# Logs
+*.log
+logs/
+
+# Generated vector database / local data
+data/chroma/
+
+# IDE
+.vscode/
+.idea/

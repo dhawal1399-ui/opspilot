@@ -1,0 +1,182 @@
+[
+  {
+    "id": "api_services_0",
+    "text": "# API Services",
+    "metadata": {
+      "source": "api_services.md",
+      "file_path": "docs/api_services.md",
+      "file_type": ".md",
+      "chunk_index": 0,
+      "total_chunks": 3,
+      "section": "API Services"
+    }
+  },
+  {
+    "id": "api_services_1",
+    "text": "## Service Health API health should be checked when an operation appears to fail unexpectedly. The Health MCP Server can check service health and individual endpoints. Health statuses are: - HEALTHY - DEGRADED - DOWN - UNKNOWN",
+    "metadata": {
+      "source": "api_services.md",
+      "file_path": "docs/api_services.md",
+      "file_type": ".md",
+      "chunk_index": 1,
+      "total_chunks": 3,
+      "section": "Service Health"
+    }
+  },
+  {
+    "id": "api_services_2",
+    "text": "## Payment API The payment API is responsible for communicating with the external payment gateway. If the payment API is DOWN, investigate service availability before retrying failed payments. If the payment API is HEALTHY but a specific transaction fails, investigate the transaction and gateway response.",
+    "metadata": {
+      "source": "api_services.md",
+      "file_path": "docs/api_services.md",
+      "file_type": ".md",
+      "chunk_index": 2,
+      "total_chunks": 3,
+      "section": "Payment API"
+    }
+  },
+  {
+    "id": "order_service_0",
+    "text": "# Order Service",
+    "metadata": {
+      "source": "order_service.md",
+      "file_path": "docs/order_service.md",
+      "file_type": ".md",
+      "chunk_index": 0,
+      "total_chunks": 4,
+      "section": "Order Service"
+    }
+  },
+  {
+    "id": "order_service_1",
+    "text": "## Order Lifecycle Orders can have the following statuses: - pending - processing - completed - failed - cancelled",
+    "metadata": {
+      "source": "order_service.md",
+      "file_path": "docs/order_service.md",
+      "file_type": ".md",
+      "chunk_index": 1,
+      "total_chunks": 4,
+      "section": "Order Lifecycle"
+    }
+  },
+  {
+    "id": "order_service_2",
+    "text": "## Failed Orders An order is marked as failed when a required operation in the order workflow cannot be completed. For payment-related failures: 1. Check the order status. 2. Retrieve the associated payment. 3. Retrieve the payment transaction. 4. Search application logs using the order ID. 5. Identify the underlying payment or gateway error. A PAYMENT_FAILED error may be caused by a payment gateway rejection.",
+    "metadata": {
+      "source": "order_service.md",
+      "file_path": "docs/order_service.md",
+      "file_type": ".md",
+      "chunk_index": 2,
+      "total_chunks": 4,
+      "section": "Failed Orders"
+    }
+  },
+  {
+    "id": "order_service_3",
+    "text": "## Order Investigation For a customer order investigation, start with: Customer → Order → Payment → Transaction Then correlate the results with application logs.",
+    "metadata": {
+      "source": "order_service.md",
+      "file_path": "docs/order_service.md",
+      "file_type": ".md",
+      "chunk_index": 3,
+      "total_chunks": 4,
+      "section": "Order Investigation"
+    }
+  },
+  {
+    "id": "payment_service_0",
+    "text": "# Payment Service",
+    "metadata": {
+      "source": "payment_service.md",
+      "file_path": "docs/payment_service.md",
+      "file_type": ".md",
+      "chunk_index": 0,
+      "total_chunks": 4,
+      "section": "Payment Service"
+    }
+  },
+  {
+    "id": "payment_service_1",
+    "text": "## Payment Failure The payment service processes customer payments through the configured payment gateway. When a payment fails, check the payment status and transaction record. Common payment failure error codes include: - INSUFFICIENT_FUNDS - PAYMENT_FAILED - GATEWAY_TIMEOUT - INVALID_PAYMENT_METHOD - GATEWAY_DECLINED",
+    "metadata": {
+      "source": "payment_service.md",
+      "file_path": "docs/payment_service.md",
+      "file_type": ".md",
+      "chunk_index": 1,
+      "total_chunks": 4,
+      "section": "Payment Failure"
+    }
+  },
+  {
+    "id": "payment_service_2",
+    "text": "## INSUFFICIENT_FUNDS The INSUFFICIENT_FUNDS error indicates that the payment provider rejected the transaction because the available account balance or credit limit was insufficient. Recommended action: 1. Verify the payment transaction. 2. Check the gateway response. 3. Confirm whether the customer has another valid payment method. 4. Do not retry repeatedly if the gateway continues returning INSUFFICIENT_FUNDS.",
+    "metadata": {
+      "source": "payment_service.md",
+      "file_path": "docs/payment_service.md",
+      "file_type": ".md",
+      "chunk_index": 2,
+      "total_chunks": 4,
+      "section": "INSUFFICIENT_FUNDS"
+    }
+  },
+  {
+    "id": "payment_service_3",
+    "text": "## Gateway Declined A GATEWAY_DECLINED response means the external payment gateway rejected the payment request. Check: - Gateway response code - Transaction status - Payment method - Gateway availability - Related application logs",
+    "metadata": {
+      "source": "payment_service.md",
+      "file_path": "docs/payment_service.md",
+      "file_type": ".md",
+      "chunk_index": 3,
+      "total_chunks": 4,
+      "section": "Gateway Declined"
+    }
+  },
+  {
+    "id": "troubleshooting_0",
+    "text": "# Troubleshooting Guide",
+    "metadata": {
+      "source": "troubleshooting.md",
+      "file_path": "docs/troubleshooting.md",
+      "file_type": ".md",
+      "chunk_index": 0,
+      "total_chunks": 4,
+      "section": "Troubleshooting Guide"
+    }
+  },
+  {
+    "id": "troubleshooting_1",
+    "text": "## Payment Failure Investigation When a customer reports that an order failed, collect: - Customer ID - Order ID - Payment ID - Transaction ID - Application request ID - Payment error code Use the application logs to identify the exact failure point.",
+    "metadata": {
+      "source": "troubleshooting.md",
+      "file_path": "docs/troubleshooting.md",
+      "file_type": ".md",
+      "chunk_index": 1,
+      "total_chunks": 4,
+      "section": "Payment Failure Investigation"
+    }
+  },
+  {
+    "id": "troubleshooting_2",
+    "text": "## Recommended Investigation Flow 1. Find the customer. 2. Find the customer's order. 3. Check the order status. 4. Check the associated payment. 5. Check the payment transaction. 6. Search application error logs. 7. Search the documentation for the identified error code.",
+    "metadata": {
+      "source": "troubleshooting.md",
+      "file_path": "docs/troubleshooting.md",
+      "file_type": ".md",
+      "chunk_index": 2,
+      "total_chunks": 4,
+      "section": "Recommended Investigation Flow"
+    }
+  },
+  {
+    "id": "troubleshooting_3",
+    "text": "## INSUFFICIENT_FUNDS If the transaction contains INSUFFICIENT_FUNDS, the payment provider rejected the transaction because sufficient funds or credit were unavailable. The order may therefore be marked as failed. The recommended customer-facing action is to retry using a valid payment method after confirming the payment provider response.",
+    "metadata": {
+      "source": "troubleshooting.md",
+      "file_path": "docs/troubleshooting.md",
+      "file_type": ".md",
+      "chunk_index": 3,
+      "total_chunks": 4,
+      "section": "INSUFFICIENT_FUNDS"
+    }
+  }
+]
