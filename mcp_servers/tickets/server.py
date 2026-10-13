@@ -261,7 +261,6 @@ async def update_ticket(
             "error": "Ticket update error",
         }
 
-
 async def main():
     await server.run_stdio_async()
 

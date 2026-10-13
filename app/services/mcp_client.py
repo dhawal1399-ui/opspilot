@@ -56,6 +56,7 @@ class MCPClient:
             "logs": StdioServerParameters(
                 command=python_executable,
                 args=["-m", "mcp_servers.logs.server"],
+                # args=["-m", "mcp_servers.logs.server_broken"],
             ),
             "tickets": StdioServerParameters(
                 command=python_executable,
