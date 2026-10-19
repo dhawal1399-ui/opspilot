@@ -1,3 +1,4 @@
+
 name: OpsPilot CI
 
 on:
@@ -7,7 +8,6 @@ on:
   pull_request:
     branches:
       - main
-
 
 jobs:
   test:
@@ -27,3 +27,13 @@ jobs:
 
       - name: Run tests
         run: pytest
+
+  docker-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t opspilot:ci .
